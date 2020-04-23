@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_165123) do
+ActiveRecord::Schema.define(version: 2020_04_23_214752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,17 +42,17 @@ ActiveRecord::Schema.define(version: 2020_04_23_165123) do
   create_table "doulas", force: :cascade do |t|
     t.string "name"
     t.string "last_initial"
-    t.string "picture"
-    t.datetime "available_date"
-    t.integer "attended_births"
-    t.string "bio"
-    t.string "specialty"
-    t.boolean "certified"
-    t.boolean "birth_doula"
-    t.boolean "postpartum_doula"
-    t.string "county_1"
-    t.string "county_2"
-    t.string "county_3"
+    t.string "picture", default: ""
+    t.datetime "available_date", default: "2020-10-08 10:10:00"
+    t.integer "attended_births", default: 0
+    t.string "bio", default: ""
+    t.string "specialty", default: ""
+    t.boolean "certified", default: true
+    t.boolean "birth_doula", default: true
+    t.boolean "postpartum_doula", default: true
+    t.string "county_1", default: ""
+    t.string "county_2", default: ""
+    t.string "county_3", default: ""
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
@@ -71,15 +71,15 @@ ActiveRecord::Schema.define(version: 2020_04_23_165123) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "last_initial"
-    t.string "picture"
-    t.datetime "due_date"
-    t.integer "previous_births"
-    t.string "bio"
-    t.boolean "age_under_35"
-    t.boolean "age_over_35"
-    t.string "county_1"
-    t.string "county_2"
-    t.string "county_3"
+    t.string "picture", default: ""
+    t.datetime "due_date", default: "2020-10-08 10:10:00"
+    t.integer "previous_births", default: 0
+    t.string "bio", default: ""
+    t.boolean "age_under_35", default: true
+    t.boolean "age_over_35", default: false
+    t.string "county_1", default: ""
+    t.string "county_2", default: ""
+    t.string "county_3", default: ""
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
