@@ -17,13 +17,11 @@ ActiveRecord::Schema.define(version: 2020_04_23_214752) do
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "doula_id", null: false
     t.datetime "time"
     t.boolean "confirmed"
     t.integer "appointment_num"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["doula_id"], name: "index_appointments_on_doula_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
@@ -35,26 +33,6 @@ ActiveRecord::Schema.define(version: 2020_04_23_214752) do
     t.string "address"
     t.float "lat"
     t.float "lng"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "doulas", force: :cascade do |t|
-    t.string "name"
-    t.string "last_initial"
-    t.string "picture", default: ""
-    t.datetime "available_date", default: "2020-10-08 10:10:00"
-    t.integer "attended_births", default: 0
-    t.string "bio", default: ""
-    t.string "specialty", default: ""
-    t.boolean "certified", default: true
-    t.boolean "birth_doula", default: true
-    t.boolean "postpartum_doula", default: true
-    t.string "county_1", default: ""
-    t.string "county_2", default: ""
-    t.string "county_3", default: ""
-    t.string "username"
-    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -73,20 +51,24 @@ ActiveRecord::Schema.define(version: 2020_04_23_214752) do
     t.string "last_initial"
     t.string "picture", default: ""
     t.datetime "due_date", default: "2020-10-08 10:10:00"
+    t.datetime "available_date", default: "2020-10-08 10:10:00"
     t.integer "previous_births", default: 0
     t.string "bio", default: ""
-    t.boolean "age_under_35", default: true
-    t.boolean "age_over_35", default: false
+    t.datetime "birthday"
     t.string "county_1", default: ""
     t.string "county_2", default: ""
     t.string "county_3", default: ""
     t.string "username"
     t.string "password_digest"
+    t.boolean "is_doula", default: false
+    t.string "specialty", default: ""
+    t.boolean "certified", default: true
+    t.boolean "birth_doula", default: false
+    t.boolean "postpartum_doula", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "appointments", "doulas"
   add_foreign_key "appointments", "users"
   add_foreign_key "favorites", "birth_centers"
   add_foreign_key "favorites", "users"

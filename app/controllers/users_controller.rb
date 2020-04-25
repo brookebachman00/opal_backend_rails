@@ -5,7 +5,18 @@ class UsersController < ApplicationController
     def show
       render json: @user
     end
-  
+
+    def create
+    
+        @user = User.create!(user_params)
+        if @user.valid?
+          
+          render json: { user: UserSerializer.new(@user) }, status: :created
+        else
+          render json: { error: 'failed to create user' }, status: :not_acceptable
+        end
+      end
+     
     # PATCH/PUT /users/1
     def update
       if @user.update(user_params)
@@ -18,6 +29,11 @@ class UsersController < ApplicationController
     # DELETE /users/1
     def destroy
       @user.destroy
+    end
+
+    def index 
+      users = User.all
+      render json: users
     end
   
     private
