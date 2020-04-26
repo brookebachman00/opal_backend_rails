@@ -1,5 +1,6 @@
 class BirthCentersController < ApplicationController
     before_action :set_favorite, only: [:show, :update, :destroy]
+    skip_before_action :authorized, only: [:show, :index]
   
     # GET /users/1
     def show

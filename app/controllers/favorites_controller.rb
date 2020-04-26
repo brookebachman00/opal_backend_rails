@@ -1,7 +1,18 @@
 class FavoritesController < ApplicationController
-    before_action :set_favorite, only: [:show, :update, :destroy]
+    before_action :set_favorite, only: [:create, :show, :update, :destroy]
   
     # GET /users/1
+
+    def create 
+      @favorite = Favorite.new(favorite_params)
+
+    if @favorite.save
+      render json: @favorite, status: :created, location: @favorite
+    else
+      render json: @favorite.errors, status: :unprocessable_entity
+    end
+    end
+
     def show
       render json: favorite
     end
@@ -33,7 +44,7 @@ class FavoritesController < ApplicationController
   
       # Only allow a trusted parameter "white list" through.
       def favorite_params
-        params.require(:favorite).permit(:user_id, :birth_center, :favorite_id)
+        params.require(:favorite).permit(:user_id, :birth_center_id, :favorite_id)
       end
   end
   
