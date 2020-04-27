@@ -17,7 +17,8 @@ ActiveRecord::Schema.define(version: 2020_04_23_214752) do
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.datetime "time"
+    t.date "date"
+    t.time "time"
     t.boolean "confirmed"
     t.integer "appointment_num"
     t.datetime "created_at", precision: 6, null: false
@@ -50,11 +51,11 @@ ActiveRecord::Schema.define(version: 2020_04_23_214752) do
     t.string "name"
     t.string "last_initial"
     t.string "picture", default: ""
-    t.datetime "due_date", default: "2020-10-08 10:10:00"
-    t.datetime "available_date", default: "2020-10-08 10:10:00"
+    t.date "due_date", default: "2020-10-08"
+    t.date "available_date", default: "2020-10-08"
     t.integer "previous_births", default: 0
     t.string "bio", default: ""
-    t.datetime "birthday"
+    t.date "birthday"
     t.string "county_1", default: ""
     t.string "county_2", default: ""
     t.string "county_3", default: ""
@@ -62,9 +63,11 @@ ActiveRecord::Schema.define(version: 2020_04_23_214752) do
     t.string "password_digest"
     t.boolean "is_doula", default: false
     t.string "specialty", default: ""
-    t.boolean "certified", default: true
+    t.boolean "certified", default: false
     t.boolean "birth_doula", default: false
     t.boolean "postpartum_doula", default: false
+    t.string "price", default: "$"
+    t.time "preferred_apt_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
