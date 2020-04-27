@@ -34,7 +34,10 @@ class UsersController < ApplicationController
 
     def index 
       users = User.all
-      render json: users
+      #render json: users
+      render json: { users: users }, status: :created
+     
+     
     end
   
     private

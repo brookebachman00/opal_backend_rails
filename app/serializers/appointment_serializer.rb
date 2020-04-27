@@ -1,4 +1,4 @@
 class AppointmentSerializer < ActiveModel::Serializer
-  attributes :id, :user, :doula, :time, :confirmed, :appointment_num
-  belongs_to :user
+  attributes :id, :user, :time, :confirmed, :appointment_num
+  
 end
