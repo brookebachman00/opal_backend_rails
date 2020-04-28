@@ -21,6 +21,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.boolean :postpartum_doula
       t.string :price
       t.time :preferred_apt_time
+      
 
 
       t.timestamps

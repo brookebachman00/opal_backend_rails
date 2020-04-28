@@ -4,15 +4,17 @@ Rails.application.routes.draw do
   resources :users
   resources :appointments
   resources :favorites
-  resources :birth_centers, only: [:index]
   get '/birthcenters', to: 'birth_centers#index'
+  
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:create]
+      post '/signup', to: 'user#create'
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
+      get '/users', to: 'users#index'
       post 'upvote'
+     
     end
   end
  

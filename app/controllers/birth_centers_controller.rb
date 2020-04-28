@@ -21,10 +21,16 @@ class BirthCentersController < ApplicationController
       birth_center.destroy
     end
 
-    def index 
-      birth_centers = BirthCenter.all
-      render json: birth_centers
-    end
+
+# require 'pry'
+# require 'rest-client'
+
+def index
+    response_string = RestClient.get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=birth|center&location=#{params[:lat]},#{params[:lng]}&radius=10000&key=#{ENV['google_api_key']}")
+    
+    birth_center_data = JSON.parse(response_string)
+    render json: birth_center_data
+end
   
     private
       # Use callbacks to share common setup or constraints between actions.

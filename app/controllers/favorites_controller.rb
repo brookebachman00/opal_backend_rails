@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-    before_action :set_user, only: [:create, :show, :update, :destroy]
+    before_action :authorized, only: [:create, :show, :update, :destroy, :index]
   
     # GET /users/1
 

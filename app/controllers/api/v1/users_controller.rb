@@ -1,14 +1,15 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: [:create, :index, :show]
   
   def index
-    @users = User.all
-    render json: @users
+    users = User.all
+    render json: users
   end
   # GET /users/1
   def show
     render json: @user
   end
+
   def create
     @user = User.create(user_params)
     if @user.valid?
@@ -39,6 +40,6 @@ class Api::V1::UsersController < ApplicationController
      
       private
       def user_params
-        params.require(:user).permit(:name, :last_initial, :picture, :due_date, :available_date, :is_doula, :specialty, :certified, :birth_doula, :postpartum_doula, :previous_births, :county_1, :county_2, :county_3, :username, :password, :bio)
+        params.require(:user).permit(:name, :last_initial, :picture, :due_date, :available_date, :is_doula, :specialty, :certified, :birth_doula, :postpartum_doula, :previous_births, :county_1, :county_2, :county_3, :username, :password, :bio, :username)
       end
 end
