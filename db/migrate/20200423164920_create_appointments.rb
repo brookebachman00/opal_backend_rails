@@ -4,7 +4,7 @@ class CreateAppointments < ActiveRecord::Migration[6.0]
       t.date :date
       t.time :time
       t.boolean :confirmed
-      t.integer :appointment_num
+     
       t.integer :appointmentee_id
       t.integer :appointmenter_id
 

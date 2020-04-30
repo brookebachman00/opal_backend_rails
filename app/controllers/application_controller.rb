@@ -1,13 +1,11 @@
 class ApplicationController < ActionController::API
-    # before_action :authorized
+    before_action :authorized
    
-
     def encode_token(payload) #{ user_id: 2 }
         JWT.encode(payload, 'my_s3cr3t') #issue a token, store payload in token
     end
     
       def auth_header
-        byebug
         request.headers['Authorization'] # Bearer <token>
       end
     

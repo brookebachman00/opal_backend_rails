@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2020_04_23_214752) do
     t.date "date"
     t.time "time"
     t.boolean "confirmed"
-    t.integer "appointment_num"
     t.integer "appointmentee_id"
     t.integer "appointmenter_id"
     t.datetime "created_at", precision: 6, null: false
