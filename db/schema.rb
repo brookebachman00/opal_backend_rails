@@ -67,6 +67,9 @@ ActiveRecord::Schema.define(version: 2020_04_23_214752) do
     t.boolean "postpartum_doula", default: false
     t.string "price", default: "$"
     t.time "preferred_apt_time"
+    t.boolean "homebirth", default: true
+    t.boolean "hospital_birth", default: true
+    t.boolean "birthcenter", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -16,6 +16,9 @@ class ChangeColumn < ActiveRecord::Migration[6.0]
     change_column :users, :birth_doula, :boolean, :default => false
     change_column :users, :postpartum_doula, :boolean, :default => false
     change_column :users, :price, :string, :default => "$"
+    change_column :users, :homebirth, :boolean, :default => true
+    change_column :users, :hospital_birth, :boolean, :default => true
+    change_column :users, :birthcenter, :boolean, :default => true
 
     
 

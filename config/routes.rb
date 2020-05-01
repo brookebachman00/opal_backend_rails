@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :appointments
   resources :favorites
   get '/birthcenters', to: 'birth_centers#index'
+  patch '/appointments/edit/:id', to: 'appointments#update'
   
 
   namespace :api do
