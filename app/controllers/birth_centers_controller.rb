@@ -6,7 +6,15 @@ class BirthCentersController < ApplicationController
     def show
       render json: birth_center
     end
-  
+    def create 
+      @birth_center = BirthCenter.new(birth_center_params)
+
+    if @birth_center.save
+      render json: @birth_center, status: :created
+    else
+      render json: @birth_center.errors, status: :unprocessable_entity
+    end
+    end
     # PATCH/PUT /birth_centers/1
     def update
       if birth_center.update(birth_center_params)
@@ -40,7 +48,7 @@ end
   
       # Only allow a trusted parameter "white list" through.
       def birth_center_params
-        params.require(:birth_center).permit(:user_id, :birth_center_id)
+        params.require(:birth_center).permit(:lat, :lng, :name, :place_id, :address, :rating, :photo)
       end
   end
   

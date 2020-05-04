@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # resources :appointments
   # resources :favorites
   get '/birthcenters', to: 'birth_centers#index'
+  post '/birthcenters', to: 'birth_centers#create'
 
   post '/favorites', to: 'favorites#create'
   patch '/favorites/edit/:id', to: 'favorites#update'
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
   patch '/appointments/edit/:id', to: 'appointments#update'
   delete '/appointments/delete/:id', to: 'appointments#destroy'
   
+  post '/comments', to: 'comments#create'
+  delete '/comments', to: 'comments#destroy'
 
   namespace :api do
     namespace :v1 do

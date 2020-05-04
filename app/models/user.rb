@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
     has_many :favorites
     has_many :birth_centers, through: :favorites
+    has_many :comments, through: :birth_centers
     has_secure_password
 
     validates :username, uniqueness: {case_sensitive: false}
