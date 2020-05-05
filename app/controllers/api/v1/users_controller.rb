@@ -20,7 +20,7 @@ class Api::V1::UsersController < ApplicationController
     end
   end
   def update
-    byebug
+  
     if @user.update(user_params)
       render json: @user
     else
@@ -38,9 +38,7 @@ class Api::V1::UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-     
-      private
       def user_params
-        params.require(:user).permit(:name, :last_initial, :picture, :due_date, :available_date, :is_doula, :specialty, :certified, :birth_doula, :postpartum_doula, :previous_births, :county_1, :county_2, :county_3, :username, :password, :bio, :username)
+        params.permit(:name, :last_initial, :picture, :due_date, :available_date, :is_doula, :specialty, :certified, :birth_doula, :postpartum_doula, :previous_births, :county_1, :county_2, :county_3, :username, :password, :bio, :username, :homebirth, :hospital_birth, :birthcenter)
       end
 end
