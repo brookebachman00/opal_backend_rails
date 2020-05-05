@@ -7,16 +7,19 @@ Rails.application.routes.draw do
   get '/birthcenters', to: 'birth_centers#index'
   post '/birthcenters', to: 'birth_centers#create'
 
+  get '/favorites', to: 'favorites#index'
   post '/favorites', to: 'favorites#create'
   patch '/favorites/edit/:id', to: 'favorites#update'
   delete '/favorites/delete/:id', to: 'favorites#destroy'
 
+  get '/appointments', to: 'appointments#index'
   post '/appointments', to: 'appointments#create'
   patch '/appointments/edit/:id', to: 'appointments#update'
   delete '/appointments/delete/:id', to: 'appointments#destroy'
   
   post '/comments', to: 'comments#create'
-  delete '/comments', to: 'comments#destroy'
+  get '/comments', to: 'comments#index'
+  delete '/comments/delete/:id', to: 'comments#destroy'
 
   namespace :api do
     namespace :v1 do

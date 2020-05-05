@@ -39,11 +39,11 @@ ActiveRecord::Schema.define(version: 2020_05_04_005934) do
 
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "birth_centers_id", null: false
+    t.bigint "birth_center_id", null: false
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["birth_centers_id"], name: "index_comments_on_birth_centers_id"
+    t.index ["birth_center_id"], name: "index_comments_on_birth_center_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -63,15 +63,15 @@ ActiveRecord::Schema.define(version: 2020_05_04_005934) do
     t.date "due_date", default: "2020-10-08"
     t.date "available_date", default: "2020-10-08"
     t.integer "previous_births", default: 0
-    t.string "bio", default: ""
+    t.string "bio", default: "I love birth"
     t.date "birthday"
-    t.string "county_1", default: ""
-    t.string "county_2", default: ""
-    t.string "county_3", default: ""
+    t.string "county_1", default: "Alameda"
+    t.string "county_2", default: "Santa Clara"
+    t.string "county_3", default: "Los Angeles"
     t.string "username"
     t.string "password_digest"
     t.boolean "is_doula", default: false
-    t.string "specialty", default: ""
+    t.string "specialty", default: "Hypnobirthing"
     t.boolean "certified", default: false
     t.boolean "birth_doula", default: false
     t.boolean "postpartum_doula", default: false
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_005934) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "comments", "birth_centers", column: "birth_centers_id"
+  add_foreign_key "comments", "birth_centers"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "birth_centers"
   add_foreign_key "favorites", "users"
