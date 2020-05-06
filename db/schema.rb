@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_005934) do
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.date "date"
-    t.time "time"
+    t.string "date"
+    t.string "time"
     t.boolean "confirmed"
     t.integer "appointmentee_id"
     t.integer "appointmenter_id"
@@ -60,11 +60,11 @@ ActiveRecord::Schema.define(version: 2020_05_04_005934) do
     t.string "name"
     t.string "last_initial"
     t.string "picture", default: ""
-    t.date "due_date", default: "2020-10-08"
-    t.date "available_date", default: "2020-10-08"
+    t.string "due_date", default: "2020-10-08"
+    t.string "available_date", default: "2020-10-08"
     t.integer "previous_births", default: 0
     t.string "bio", default: "I love birth"
-    t.date "birthday"
+    t.string "birthday"
     t.string "county_1", default: "Alameda"
     t.string "county_2", default: "Santa Clara"
     t.string "county_3", default: "Los Angeles"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_005934) do
     t.boolean "birth_doula", default: false
     t.boolean "postpartum_doula", default: false
     t.string "price", default: "$"
-    t.time "preferred_apt_time"
+    t.string "preferred_apt_time", default: "100000"
     t.boolean "homebirth", default: true
     t.boolean "hospital_birth", default: true
     t.boolean "birthcenter", default: true

@@ -4,11 +4,11 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :last_initial
       t.string :picture
-      t.date :due_date
+      t.string :due_date
       t.date :available_date
       t.integer :previous_births
       t.string :bio
-      t.date :birthday
+      t.string :birthday
       t.string :county_1
       t.string :county_2
       t.string :county_3
@@ -20,7 +20,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.boolean :birth_doula
       t.boolean :postpartum_doula
       t.string :price
-      t.time :preferred_apt_time
+      t.string :preferred_apt_time
       t.boolean :homebirth
       t.boolean :hospital_birth
       t.boolean :birthcenter

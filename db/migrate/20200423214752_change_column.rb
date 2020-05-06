@@ -1,9 +1,9 @@
 class ChangeColumn < ActiveRecord::Migration[6.0]
   def change
     change_column :users, :picture, :string, :default => ""
-    change_column :users, :due_date, :date, :default => '2020-10-08'
-    change_column :users, :available_date, :date, :default => '2020-10-08'
-    change_column :users, :preferred_apt_time, :time, :default => '100000'
+    change_column :users, :due_date, :string, :default => '2020-10-08'
+    change_column :users, :available_date, :string, :default => '2020-10-08'
+    change_column :users, :preferred_apt_time, :string, :default => '100000'
     change_column :users, :previous_births, :integer, :default => 0
     change_column :users, :bio, :string, :default => "I love birth"
     
