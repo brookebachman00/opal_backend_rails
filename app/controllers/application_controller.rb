@@ -42,6 +42,10 @@ class ApplicationController < ActionController::API
       def sayHello 
         puts "say hello method"
       end
+
+      def app_params
+        params.permit(:appointment, :id)
+      end
   
        
 end
