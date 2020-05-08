@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
     before_action :authorized, only: [:create, :show, :update, :destroy, :index]
+    # skip_before_action :authorized, only: [:index]
   
     # GET /users/1
 
@@ -36,8 +37,10 @@ class FavoritesController < ApplicationController
     end
 
     def index 
-      favorites = Favorite.all
+      favorites = Favorite.all 
       render json: favorites
+      # , include: 'birth_centers.comments'
+      # , {birth_center: {comments: [:content]}}
     end
   
     private

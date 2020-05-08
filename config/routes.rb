@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   get '/favorites', to: 'favorites#index'
   post '/favorites', to: 'favorites#create'
-  patch '/favorites/edit/:id', to: 'favorites#update'
   delete '/favorites/delete/:id', to: 'favorites#destroy'
 
   get '/appointments', to: 'appointments#index'
@@ -26,7 +25,7 @@ Rails.application.routes.draw do
       post '/signup', to: 'users#create'
       post '/login', to: 'auth#create'
       get '/users', to: 'users#index'
-      patch '/users/:id', to: 'users#update'
+      patch '/users/edit/:id', to: 'users#update'
      
      
     end
