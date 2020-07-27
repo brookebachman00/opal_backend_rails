@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_214752) do
+ActiveRecord::Schema.define(version: 2020_05_04_005934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "time"
+    t.string "date"
+    t.string "time"
     t.boolean "confirmed"
-    t.integer "appointment_num"
+    t.integer "appointmentee_id"
+    t.integer "appointmenter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "birth_centers", force: :cascade do |t|
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2020_04_23_214752) do
     t.float "lng"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "birth_center_id", null: false
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["birth_center_id"], name: "index_comments_on_birth_center_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -50,26 +60,32 @@ ActiveRecord::Schema.define(version: 2020_04_23_214752) do
     t.string "name"
     t.string "last_initial"
     t.string "picture", default: ""
-    t.datetime "due_date", default: "2020-10-08 10:10:00"
-    t.datetime "available_date", default: "2020-10-08 10:10:00"
+    t.string "due_date", default: "2020-10-08"
+    t.string "available_date", default: "2020-10-08"
     t.integer "previous_births", default: 0
-    t.string "bio", default: ""
-    t.datetime "birthday"
-    t.string "county_1", default: ""
-    t.string "county_2", default: ""
-    t.string "county_3", default: ""
+    t.string "bio", default: "I love birth"
+    t.string "birthday"
+    t.string "county_1", default: "Alameda"
+    t.string "county_2", default: "Santa Clara"
+    t.string "county_3", default: "Los Angeles"
     t.string "username"
     t.string "password_digest"
     t.boolean "is_doula", default: false
-    t.string "specialty", default: ""
-    t.boolean "certified", default: true
+    t.string "specialty", default: "Hypnobirthing"
+    t.boolean "certified", default: false
     t.boolean "birth_doula", default: false
     t.boolean "postpartum_doula", default: false
+    t.string "price", default: "$"
+    t.string "preferred_apt_time", default: "100000"
+    t.boolean "homebirth", default: true
+    t.boolean "hospital_birth", default: true
+    t.boolean "birthcenter", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "appointments", "users"
+  add_foreign_key "comments", "birth_centers"
+  add_foreign_key "comments", "users"
   add_foreign_key "favorites", "birth_centers"
   add_foreign_key "favorites", "users"
 end
