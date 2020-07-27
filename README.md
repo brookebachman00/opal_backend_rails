@@ -2,7 +2,7 @@
 
 <h1>Opal</h1>
 
-*Opal is an application that aids users in finding Doulas and Birth Centers nearest to them. 
+*Opal is an application that aids users in finding Doulas and Birth Centers nearest to them.*
 
 I built this application with 'rails', '~> 6.0.2', '>= 6.0.2.2'
 
