@@ -6,7 +6,7 @@
 
 I built this application with 'rails', '~> 6.0.2', '>= 6.0.2.2'
 
-The technologies used: bycrpt gem, puma, rack cors, byebug gem,  JWT tokens, active model serializers gem.
+The technologies used: bycrpt gem, puma gem, rack cors gem, byebug gem,  JWT tokens, active model serializers gem.
 
 
 The frontend of this application was created with React. Here is the github link: https://github.com/brookebachman00/opal_frontent_react/
